@@ -1,0 +1,33 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+enum Status {
+  ABERTA
+  EM_ANDAMENTO
+  CONCLUIDA
+}
+
+enum Priority {
+  BAIXA
+  MEDIA
+  ALTA
+}
+
+model Ticket {
+    id          String   @id @db.Uuid  
+    title       String
+    description String
+    status      Status
+    priority    Priority
+    createdAt   DateTime @map("created_at")
+    updatedAt   DateTime @map("updated_at") 
+
+    @@map("tickets")
+}
+

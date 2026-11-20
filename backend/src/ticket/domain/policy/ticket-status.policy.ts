@@ -1,5 +1,5 @@
 import { StatusEnum, StatusEnumType } from "../enum/Status.enum";
-import { InvalidTransitionStatusError } from "../Error/domain.error";
+import { InvalidTransitionStatusError } from "../error/domain.error";
 
 
 const mapStatusTransitions: Record<StatusEnumType, StatusEnumType[]> = {

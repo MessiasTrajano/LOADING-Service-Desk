@@ -14,6 +14,7 @@ import { PrismaModule } from '../prisma/prisma.module';
       useClass: PrismaTicketRepository,
     }
   ],
+  exports: [TicketService],
   imports: [PrismaModule],
   
 })

@@ -1,5 +1,5 @@
 import { Ticket as PrismaTicket} from "@prisma/client";
-import { Ticket } from "../../../../domain/Ticket.entity";
+import { Ticket } from "../../../../domain/ticket.entity";
 
 export class TicketPrismaMapper {
     static toPrisma(ticket: Ticket): PrismaTicket {

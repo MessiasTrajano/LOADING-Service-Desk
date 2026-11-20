@@ -1,5 +1,5 @@
 import { PriorityEnum, PriorityEnumType } from "../enum/priority.enum";
-import { InvalidFieldError } from "../Error/domain.error";
+import { InvalidFieldError } from "../error/domain.error";
 
     export class ValidationsToEntity {
 

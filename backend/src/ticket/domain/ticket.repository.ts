@@ -1,5 +1,5 @@
-import { TicketFilter } from "./TicketFilter.type";
-import { Ticket } from "./Ticket.entity";
+import { TicketFilter } from "./ticketFilter.type";
+import { Ticket } from "./ticket.entity";
 
 export abstract class TicketRepository {
     abstract create(ticket: Ticket): Promise<void>;

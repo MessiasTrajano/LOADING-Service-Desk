@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { Ticket as PrismaTicket } from "@prisma/client";
 import { TicketRepository } from "../../../domain/ticket.repository";
-import { TicketFilter } from "../../../domain/TicketFilter.type";
+import { TicketFilter } from "../../../domain/ticketFilter.type";
 import { PrismaService } from "../../../../prisma/prisma.service";
-import { Ticket } from "../../../domain/Ticket.entity";
-import { TicketPrismaMapper  } from "./mappers/TicketPrisma.mapper";
+import { Ticket } from "../../../domain/ticket.entity";
+import { TicketPrismaMapper  } from "./mappers/ticketPrisma.mapper";
 
 @Injectable()
 export class PrismaTicketRepository extends TicketRepository {

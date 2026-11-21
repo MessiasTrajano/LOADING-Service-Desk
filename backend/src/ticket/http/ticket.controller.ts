@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Patch, Post, Query } from '@nestjs/common';
 import { TicketService } from '../application/ticket.service';
 import { Ticket } from '../domain/ticket.entity';
-import { ChangeTicketStatusDTO, CreateTicketDTO, TicketFilterDTO, UpdateTicketDescriptionDTO, UpdateTicketPriorityDTO, UpdateTicketTitleDTO } from './dto/requisitions.DTO';
+import { ChangeTicketStatusDTO, CreateTicketDTO, TicketFilterDTO, UpdateTicketCategoryDTO, UpdateTicketDescriptionDTO, UpdateTicketPriorityDTO, UpdateTicketTitleDTO } from './dto/requisitions.DTO';
 import { TicketResponse, TicketResponseDTO } from './dto/ticketResponse.DTO';
 
 @Controller('tickets')
@@ -31,6 +31,15 @@ export class TicketController {
         @Body() dto: UpdateTicketDescriptionDTO
     ): Promise<TicketResponseDTO> {
         const updatedTicket = await this.ticketService.updateTicketDescription(id, dto.description);
+        return TicketResponse.toHttpDTO(updatedTicket);
+    }
+
+    @Patch(':id/category')
+    async updateTicketCategory(
+        @Param('id', ParseUUIDPipe) id: string,
+        @Body() dto: UpdateTicketCategoryDTO
+    ): Promise<TicketResponseDTO> {
+        const updatedTicket = await this.ticketService.updateTicketCategory(id, dto.category);
         return TicketResponse.toHttpDTO(updatedTicket);
     }
 

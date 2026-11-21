@@ -6,6 +6,7 @@ import { StatusEnumType } from '../domain/enum/Status.enum';
 import { PriorityEnumType } from '../domain/enum/priority.enum';
 import { TicketFilter } from '../domain/ticketFilter.type';
 import { TicketNotFoundError } from '../domain/error/domain.error';
+import { CategoryEnumType } from '../domain/enum/category.enum';
 
 @Injectable()
 export class TicketService {
@@ -27,6 +28,13 @@ export class TicketService {
     async updateTicketDescription(id: string, description: string): Promise<Ticket> {
         const existingTicket = await this.getTicketById(id);
         existingTicket.updateDescription(description);
+        await this.ticketRepository.update(existingTicket);
+        return existingTicket;
+    }
+
+    async updateTicketCategory(id: string, category: CategoryEnumType): Promise<Ticket> {
+        const existingTicket = await this.getTicketById(id);
+        existingTicket.updateCategory(category);
         await this.ticketRepository.update(existingTicket);
         return existingTicket;
     }

@@ -56,7 +56,8 @@ export class PrismaTicketRepository extends TicketRepository {
         const ticket: PrismaTicket[] = await this.prisma.ticket.findMany({
             where: {
                 status: filter?.status,
-                priority: filter?.priority
+                priority: filter?.priority,
+                category: filter?.category
             },
             orderBy: {
                 createdAt: 'desc'

@@ -1,0 +1,55 @@
+
+.summary-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 14px 15px;
+  min-width: 0;
+}
+
+.summary-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 12px;
+  color: #475569;
+}
+
+.summary-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-icon.blue {
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.summary-icon.orange {
+  background: #FFF7ED;
+  color: #EA580C;
+}
+
+.summary-icon.green {
+  background: #ECFDF5;
+  color: #059669;
+}
+
+.summary-card h2 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #172033;
+  margin-top: 3px;
+}
+
+.summary-card p {
+  font-size: 10px;
+  color: #64748B;
+  margin-top: 8px;
+}

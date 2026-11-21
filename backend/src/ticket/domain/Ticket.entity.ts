@@ -7,6 +7,7 @@ import { ValidationsToEntity } from "./validations/validation";
 import { validateChangeStatus } from "./policy/ticket-status.policy";
 
 import { randomUUID } from 'node:crypto'
+import { CategoryEnumType } from "./enum/category.enum";
 
 
 export class Ticket {
@@ -14,6 +15,7 @@ export class Ticket {
     private readonly _id: string;
     private _title: string;
     private _description: string;
+    private _category: CategoryEnumType;
     private _status: StatusEnumType;
     private _priority: PriorityEnumType;
     private readonly _createdAt: Date;
@@ -25,6 +27,7 @@ export class Ticket {
         this._id = ticketProps.id;    
         this._title = ticketProps.title;
         this._description = ticketProps.description;
+        this._category = ticketProps.category;
         this._status = ticketProps.status;
         this._priority = ticketProps.priority;
         this._createdAt = new Date(ticketProps.createdAt);
@@ -34,15 +37,16 @@ export class Ticket {
 
     static create(props: TicketPropsToCreate
     ): Ticket {
-        const { title, description, priority } = props;
+        const { title, description, category, priority } = props;
         const normalizedTitle = Ticket.normalizeTitle(title);
         const normalizedDescription = Ticket.normalizeDescription(description);
-        ValidationsToEntity.validateRecivedParamsToCreate(normalizedTitle, normalizedDescription, priority);
+        ValidationsToEntity.validateRecivedParamsToCreate(normalizedTitle, normalizedDescription, category, priority);
         const date = new Date();
         return new Ticket({
             id: randomUUID(),
             title: normalizedTitle,
             description: normalizedDescription,
+            category,
             status: StatusEnum.ABERTA,
             priority,
             createdAt: date,
@@ -86,6 +90,12 @@ export class Ticket {
         this._updatedAt = new Date();
     }
 
+    public updateCategory(category: CategoryEnumType): void {
+        ValidationsToEntity.validateCategory(category);
+        this._category = category;
+        this._updatedAt = new Date();
+    }
+
      public changeStatus(status: StatusEnumType): void {
         validateChangeStatus(this._status, status);
         this._status = status;
@@ -108,6 +118,10 @@ export class Ticket {
 
     public get description(): string {
         return this._description;
+    }
+
+    public get category(): CategoryEnumType {
+        return this._category;
     }
 
     public get status(): StatusEnumType { 

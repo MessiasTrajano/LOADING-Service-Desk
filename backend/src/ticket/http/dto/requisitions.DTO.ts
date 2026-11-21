@@ -1,6 +1,7 @@
 import { IsEnum, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
 import { PriorityEnum, type PriorityEnumType } from "../../domain/enum/priority.enum";
 import { StatusEnum, type StatusEnumType } from "../../domain/enum/Status.enum";
+import { CategoryEnum, type CategoryEnumType } from "../../domain/enum/category.enum";
 
 export class CreateTicketDTO {
 
@@ -15,6 +16,10 @@ export class CreateTicketDTO {
     @MaxLength(1000, {message: "Description cannot exceed 1000 characters"})
     @MinLength(2, {message: "Description must be at least 2 characters"})
     description: string;
+
+    @IsNotEmpty({message: "Category is required"})
+    @IsEnum(CategoryEnum, {message: "Category must be one of the following values: HARDWARE/SOFTWARE/REDE/ACESSO/OUTROS"})
+    category: CategoryEnumType;
 
     @IsEnum(PriorityEnum, {message: "Priority must be one of the following values: BAIXA/MEDIA/ALTA"})
     @IsNotEmpty({message: "Priority is required"})
@@ -36,6 +41,13 @@ export class UpdateTicketDescriptionDTO {
     @MinLength(2, {message: "Description must be at least 2 characters"})
     description: string;
 }
+
+export class UpdateTicketCategoryDTO {
+    @IsNotEmpty({message: "Category is required"})
+    @IsEnum(CategoryEnum, {message: "Category must be one of the following values: HARDWARE/SOFTWARE/REDE/ACESSO/OUTROS"})
+    category: CategoryEnumType;
+}
+
 export class ChangeTicketStatusDTO {
     @IsNotEmpty({message: "Status is required"})
     @IsEnum(StatusEnum, {message: "Status must be one of the following values: ABERTA/EM_ANDAMENTO/CONCLUIDA"})
@@ -55,4 +67,7 @@ export class TicketFilterDTO {
     @IsOptional()
     @IsEnum(PriorityEnum, {message: "Priority must be one of the following values: BAIXA/MEDIA/ALTA"})
     priority?: PriorityEnumType;
+    @IsOptional()
+    @IsEnum(CategoryEnum, {message: "Category must be one of the following values: HARDWARE/SOFTWARE/REDE/ACESSO/OUTROS"})
+    category?: CategoryEnumType;
 }

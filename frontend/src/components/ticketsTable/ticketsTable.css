@@ -1,0 +1,170 @@
+
+.tickets-table-container {
+  width: 100%;
+  min-width: 0;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tickets-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tickets-table thead {
+  background: #F8FAFC;
+}
+
+.tickets-table th {
+  padding: 12px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748B;
+  white-space: nowrap;
+}
+
+.tickets-table td {
+  padding: 13px 16px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 11px;
+}
+
+.ticket-title-cell {
+  min-width: 220px;
+}
+
+.ticket-title-cell strong,
+.ticket-title-cell span {
+  display: block;
+}
+
+.ticket-title-cell strong {
+  color: #172033;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.ticket-title-cell span {
+  color: #64748B;
+  font-size: 10px;
+}
+
+.priority-badge,
+.status-badge,
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* Prioridades */
+
+.priority-badge.baixa {
+  background: #ECFDF5;
+  color: #059669;
+}
+
+.priority-badge.media {
+  background: #FFFBEB;
+  color: #B45309;
+}
+
+.priority-badge.alta {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+/* Categorias */
+
+.category-badge {
+  background: #F1F5F9;
+  color: #475569;
+}
+
+/* Status */
+
+.status-badge.aberta {
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.status-badge.em_andamento {
+  background: #FFF7ED;
+  color: #EA580C;
+}
+
+.status-badge.concluida {
+  background: #ECFDF5;
+  color: #059669;
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Data */
+
+.ticket-date {
+  color: #64748B;
+  white-space: nowrap;
+}
+
+/* Ações */
+
+.ticket-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ticket-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #64748B;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ticket-actions button:hover {
+  color: #2563EB;
+  background: #EFF6FF;
+}
+
+.empty-table {
+  text-align: center;
+  color: #64748B;
+  padding: 30px !important;
+}
+
+.table-footer {
+  padding: 13px 16px;
+  border-top: 1px solid #E2E8F0;
+  font-size: 10px;
+  color: #64748B;
+}
+
+/* Responsividade */
+
+@media (max-width: 750px) {
+  .tickets-table {
+    min-width: 700px;
+  }
+}

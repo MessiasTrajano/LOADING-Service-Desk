@@ -1,15 +1,18 @@
 import { PriorityEnum, PriorityEnumType } from "../enum/priority.enum";
 import { InvalidFieldError } from "../error/domain.error";
+import { CategoryEnum, CategoryEnumType } from "../enum/category.enum";
 
     export class ValidationsToEntity {
 
         static validateRecivedParamsToCreate = (
             title: string, 
             description: string,
+            category: CategoryEnumType,
             priority: PriorityEnumType
         ): void => {
           this.validateTitle(title);
           this.validateDescription(description);
+          this.validateCategory(category);
           this.validatePriority(priority);
         };
 
@@ -29,6 +32,12 @@ import { InvalidFieldError } from "../error/domain.error";
         static validateDescription = (description: string): void => {
             if (!description || description.trim().length === 0) {
                 throw new InvalidFieldError('description', 'Description is required');
+            }
+        };
+
+        static validateCategory = (category: CategoryEnumType): void => {
+            if (!Object.values(CategoryEnum).includes(category)) {
+                throw new InvalidFieldError('category', 'Invalid category value');
             }
         };
 

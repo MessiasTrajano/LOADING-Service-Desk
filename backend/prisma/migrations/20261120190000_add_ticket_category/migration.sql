@@ -1,0 +1,4 @@
+CREATE TYPE "Category" AS ENUM ('HARDWARE', 'SOFTWARE', 'REDE', 'ACESSO', 'OUTROS');
+
+ALTER TABLE "tickets"
+ADD COLUMN "category" "Category" NOT NULL DEFAULT 'OUTROS';
